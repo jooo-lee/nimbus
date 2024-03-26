@@ -5,7 +5,9 @@
 
 import getCoordinates from './getCoordinates';
 
-const getWeather = async function getWeather(cityInput, units, apiKey) {
+const apiKey = '89ab6f6729c23a478a56b4f4bbd36f45';
+
+const getWeather = async function getWeather(cityInput, units) {
     const { lat, lon, city, country } = await getCoordinates(cityInput, apiKey);
     const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`
