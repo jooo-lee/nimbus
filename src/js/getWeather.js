@@ -5,13 +5,28 @@
 
 import getCoordinates from './getCoordinates';
 
-const getWeather = async function getWeather(city, apiKey) {
-    const { lat, lon } = await getCoordinates(city, apiKey);
+const getWeather = async function getWeather(cityInput, units, apiKey) {
+    const { lat, lon, city, country } = await getCoordinates(cityInput, apiKey);
     const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`
     );
     const weatherData = await response.json();
-    console.log(weatherData);
+    const description = weatherData.weather[0].description;
+    const icon = weatherData.weather[0].icon;
+    const temperature = weatherData.main.temp;
+    const feelsLike = weatherData.main.feels_like;
+    const humidity = weatherData.main.humidity;
+    const wind = weatherData.wind.speed;
+    return {
+        city,
+        country,
+        description,
+        icon,
+        temperature,
+        feelsLike,
+        humidity,
+        wind,
+    };
 };
 
 export default getWeather;
