@@ -31,8 +31,8 @@ const displayWeather = async function displayWeather(cityInput, units) {
     descriptionElem.textContent =
         description.charAt(0).toUpperCase() + description.slice(1);
 
-    temperatureElem.textContent = temperature;
-    feelsLikeElem.textContent = `Feels like: ${feelsLike}`;
+    temperatureElem.textContent = Math.round(temperature);
+    feelsLikeElem.textContent = `Feels like: ${Math.round(feelsLike)}`;
     humidityElem.textContent = `Humidity: ${humidity}%`;
     windSpeedElem.textContent = `Wind speed: ${windSpeed}`;
 
