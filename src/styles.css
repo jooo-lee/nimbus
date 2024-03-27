@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', system-ui, Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#project-title {
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+}
+
+/* ------------------- Search Form ------------------- */
+
+#search-city {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#city-input {
+    font-size: 1rem;
+    padding: 8px;
+}
+
+#search-btn {
+    font-size: 1rem;
+    padding: 8px;
+    background-color: #eb6e4b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+/* ------------------- Toggle Switch ------------------- */
+/* https://www.w3schools.com/howto/howto_css_switch.asp */
+
+.switch-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 26px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #eb6e4b;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #eb6e4b;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* ------------------- Weather Display ------------------- */
+
+#weather-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+}
+
+#city {
+    font-size: 2rem;
+}
+
+#description {
+    margin-bottom: 1rem;
+}
+
+#weather-icon {
+    width: 60px;
+}
+
+#weather-display-bottom-half {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 0.5rem;
+    font-size: 1rem;
+}
+
+#temperature {
+    border-right: 1px solid black;
+    padding-right: 0.5rem;
+    font-size: 2.5rem;
+    grid-row: 1 / -1;
+}
+
+/* ------------------- Hover Effects ------------------- */
+
+@media (hover: hover) {
+    #search-btn:hover {
+        filter: brightness(95%);
+    }
+
+    button:hover,
+    .slider {
+        cursor: pointer;
+    }
+}

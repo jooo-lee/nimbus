@@ -18,20 +18,24 @@
                 />
                 <button id="search-btn">Search</button>
             </form>
-            <label class="switch" for="units-toggler">
-                <input type="checkbox" id="units-toggler" />
-                <span class="slider round"></span>
-            </label>
+            <div class="switch-container">
+                <p>°C</p>
+                <label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider round"></span>
+                </label>
+                <p>°F</p>
+            </div>
             <div id="weather-display">
-                <p id="city">City</p>
-                <p id="country">Country</p>
+                <p id="city"></p>
+                <p id="country"></p>
                 <img src="#" alt="Weather icon" id="weather-icon" />
-                <p id="description">Description</p>
+                <p id="description"></p>
                 <div id="weather-display-bottom-half">
-                    <p id="temperature">Temperature</p>
-                    <p id="feels-like">Feels like</p>
-                    <p id="humidity">Humidity</p>
-                    <p id="wind-speed">Wind speed</p>
+                    <p id="temperature"></p>
+                    <p id="feels-like"></p>
+                    <p id="humidity"></p>
+                    <p id="wind-speed"></p>
                 </div>
             </div>
         </div>
