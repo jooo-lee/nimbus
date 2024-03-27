@@ -3,18 +3,37 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Nimbus</title>
+        <title>nimbus.</title>
     </head>
     <body>
-        <form id="search-city">
-            <label for="city-input"></label>
-            <input
-                type="search"
-                id="city-input"
-                name="city-input"
-                placeholder="Enter a city"
-            />
-            <button id="search-btn">Search</button>
-        </form>
+        <div id="main-container">
+            <p id="project-title">nimbus.</p>
+            <form id="search-city">
+                <label for="city-input"></label>
+                <input
+                    type="search"
+                    id="city-input"
+                    name="city-input"
+                    placeholder="Enter a city"
+                />
+                <button id="search-btn">Search</button>
+            </form>
+            <label class="switch" for="units-toggler">
+                <input type="checkbox" id="units-toggler" />
+                <span class="slider round"></span>
+            </label>
+            <div id="weather-display">
+                <p id="city">City</p>
+                <p id="country">Country</p>
+                <img src="#" alt="Weather icon" id="weather-icon" />
+                <p id="description">Description</p>
+                <div id="weather-display-bottom-half">
+                    <p id="temperature">Temperature</p>
+                    <p id="feels-like">Feels like</p>
+                    <p id="humidity">Humidity</p>
+                    <p id="wind-speed">Wind speed</p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

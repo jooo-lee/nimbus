@@ -1,12 +1,14 @@
-import getWeather from './getWeather';
+import displayWeather from './displayWeather';
 
 const initDom = function initializeDom() {
-    const cityInput = document.querySelector('#city-input');
+    displayWeather('Toronto', 'metric');
+
+    const cityInputField = document.querySelector('#city-input');
     const searchBtn = document.querySelector('#search-btn');
     searchBtn.addEventListener('click', () => {
-        getWeather(cityInput.value, 'metric')
-            .then((response) => console.log(response))
-            .catch((error) => console.error(error));
+        displayWeather(cityInputField.value, 'metric').catch((error) =>
+            console.error(error)
+        );
     });
 
     const searchCityform = document.querySelector('#search-city');

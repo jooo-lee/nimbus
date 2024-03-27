@@ -14,20 +14,20 @@ const getWeather = async function getWeather(cityInput, units) {
     );
     const weatherData = await response.json();
     const description = weatherData.weather[0].description;
-    const icon = weatherData.weather[0].icon;
+    const weatherIcon = weatherData.weather[0].icon;
     const temperature = weatherData.main.temp;
     const feelsLike = weatherData.main.feels_like;
     const humidity = weatherData.main.humidity;
-    const wind = weatherData.wind.speed;
+    const windSpeed = weatherData.wind.speed;
     return {
         city,
         country,
         description,
-        icon,
+        weatherIcon,
         temperature,
         feelsLike,
         humidity,
-        wind,
+        windSpeed,
     };
 };
 
