@@ -45,6 +45,71 @@ body {
     border-radius: 4px;
 }
 
+/* ------------------- Loader ------------------- */
+/* https://www.w3schools.com/howto/howto_css_loader.asp */
+
+.loader {
+    border-radius: 50%;
+    border: 8px solid #ccc;
+    border-top: 8px solid rgb(98, 98, 98);
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ------------------- Weather Display ------------------- */
+
+#weather-display {
+    /* 
+    We change this to display: flex using JS later on,
+    or else the weather display <div> will take up space the
+    first time we load the page on low-end devices.
+    */
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+#city {
+    font-size: 2rem;
+}
+
+#description {
+    margin-bottom: 1rem;
+}
+
+#weather-icon {
+    width: 60px;
+}
+
+#weather-display-bottom-half {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 0.5rem;
+    font-size: 1rem;
+}
+
+#temperature {
+    border-right: 1px solid black;
+    padding-right: 0.5rem;
+    font-size: 2.5rem;
+    grid-row: 1 / -1;
+    text-align: right;
+}
+
 /* ------------------- Toggle Switch ------------------- */
 /* https://www.w3schools.com/howto/howto_css_switch.asp */
 
@@ -115,46 +180,6 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
-}
-
-/* ------------------- Weather Display ------------------- */
-
-#weather-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.2rem;
-    margin-top: 1.5rem;
-    padding: 1rem;
-}
-
-#city {
-    font-size: 2rem;
-}
-
-#description {
-    margin-bottom: 1rem;
-}
-
-#weather-icon {
-    width: 60px;
-}
-
-#weather-display-bottom-half {
-    display: grid;
-    /* grid-template-columns: auto 1fr; */
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    column-gap: 0.5rem;
-    font-size: 1rem;
-}
-
-#temperature {
-    border-right: 1px solid black;
-    padding-right: 0.5rem;
-    font-size: 2.5rem;
-    grid-row: 1 / -1;
-    text-align: right;
 }
 
 /* ------------------- Hover Effects ------------------- */

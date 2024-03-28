@@ -1,6 +1,12 @@
 import getWeather from './getWeather';
 
 const displayWeather = async function displayWeather(cityInput) {
+    // Hide weather display and show loader while fetching data
+    const weatherDisplay = document.querySelector('#weather-display');
+    weatherDisplay.style.display = 'none';
+    const loader = document.querySelector('#weather-display-loader');
+    loader.style.display = 'initial';
+
     const unitsToggler = document.querySelector('#units-toggler');
     const units = unitsToggler.checked ? 'imperial' : 'metric';
 
@@ -17,7 +23,6 @@ const displayWeather = async function displayWeather(cityInput) {
 
     const cityElem = document.querySelector('#city');
     const countryElem = document.querySelector('#country');
-    const weatherIconElem = document.querySelector('#weather-icon');
     const descriptionElem = document.querySelector('#description');
     const temperatureElem = document.querySelector('#temperature');
     const feelsLikeElem = document.querySelector('#feels-like');
@@ -27,8 +32,20 @@ const displayWeather = async function displayWeather(cityInput) {
     cityElem.textContent = city;
     countryElem.textContent = country;
 
-    // Retrieve appropriate weather icon from OpenWeather
+    /**
+     * Hardcoding the weather icon <img> element in HTML causes the missing image
+     * icon to appear the first time the page is loaded, so we dynamically create
+     * the <img> element here.
+     */
+    let weatherIconElem = document.querySelector('#weather-icon');
+    if (!weatherIconElem) {
+        // Only create <img> element once, first time page is loaded
+        weatherIconElem = document.createElement('img');
+    }
     weatherIconElem.src = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+    weatherIconElem.alt = 'Weather icon';
+    weatherIconElem.id = 'weather-icon';
+    countryElem.after(weatherIconElem);
 
     // Capitalize first letter of description
     descriptionElem.textContent =
@@ -51,6 +68,10 @@ const displayWeather = async function displayWeather(cityInput) {
     } else {
         throw new Error('Invalid unit of measurement!');
     }
+
+    // Done fetching data, hide loader and show weather display
+    loader.style.display = 'none';
+    weatherDisplay.style.display = 'flex';
 };
 
 export default displayWeather;
