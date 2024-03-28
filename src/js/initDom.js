@@ -1,21 +1,13 @@
 import displayWeather from './displayWeather';
+import initSearchBtn from './initSearchBtn';
+import initSearchCityForm from './initSearchCityForm';
+import initUnitsToggler from './initUnitsToggler';
 
 const initDom = function initializeDom() {
-    displayWeather('Toronto', 'metric');
-
-    const cityInputField = document.querySelector('#city-input');
-    const searchBtn = document.querySelector('#search-btn');
-    searchBtn.addEventListener('click', () => {
-        displayWeather(cityInputField.value, 'metric').catch((error) =>
-            console.error(error)
-        );
-    });
-
-    const searchCityform = document.querySelector('#search-city');
-    searchCityform.addEventListener('submit', (event) => {
-        event.preventDefault();
-        searchCityform.reset();
-    });
+    displayWeather('Toronto');
+    initSearchCityForm();
+    initSearchBtn();
+    initUnitsToggler();
 };
 
 export default initDom;

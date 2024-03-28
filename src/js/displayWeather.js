@@ -1,6 +1,9 @@
 import getWeather from './getWeather';
 
-const displayWeather = async function displayWeather(cityInput, units) {
+const displayWeather = async function displayWeather(cityInput) {
+    const unitsToggler = document.querySelector('#units-toggler');
+    const units = unitsToggler.checked ? 'imperial' : 'metric';
+
     const {
         city,
         country,
@@ -34,7 +37,7 @@ const displayWeather = async function displayWeather(cityInput, units) {
     temperatureElem.textContent = Math.round(temperature);
     feelsLikeElem.textContent = `Feels like: ${Math.round(feelsLike)}`;
     humidityElem.textContent = `Humidity: ${humidity}%`;
-    windSpeedElem.textContent = `Wind speed: ${windSpeed}`;
+    windSpeedElem.textContent = `Wind: ${windSpeed}`;
 
     // Add appropriate units of measurement
     if (units === 'metric') {

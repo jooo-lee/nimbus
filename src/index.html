@@ -18,14 +18,6 @@
                 />
                 <button id="search-btn">Search</button>
             </form>
-            <div class="switch-container">
-                <p>°C</p>
-                <label class="switch">
-                    <input type="checkbox" />
-                    <span class="slider round"></span>
-                </label>
-                <p>°F</p>
-            </div>
             <div id="weather-display">
                 <p id="city"></p>
                 <p id="country"></p>
@@ -37,6 +29,13 @@
                     <p id="humidity"></p>
                     <p id="wind-speed"></p>
                 </div>
+            </div>
+            <div class="switch-container">
+                <p>Imperial Units</p>
+                <label class="switch">
+                    <input type="checkbox" id="units-toggler" />
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </body>
