@@ -18,6 +18,7 @@ const initSearchCityForm = function initializeSearchCityForm() {
 
         displayWeather(cityInputField.value);
         searchCityform.reset();
+        cityInputField.blur();
     });
 };
 
