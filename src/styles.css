@@ -110,6 +110,14 @@ body {
     text-align: right;
 }
 
+/* ------------------- Error Messages ------------------- */
+
+.error-msg {
+    font-weight: bold;
+    display: none;
+    color: red;
+}
+
 /* ------------------- Toggle Switch ------------------- */
 /* https://www.w3schools.com/howto/howto_css_switch.asp */
 

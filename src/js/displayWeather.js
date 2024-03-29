@@ -1,25 +1,30 @@
 import getWeather from './getWeather';
 
 const displayWeather = async function displayWeather(cityInput) {
-    // Hide weather display and show loader while fetching data
+    // Hide weather display and its error message and show loader while fetching data
     const weatherDisplay = document.querySelector('#weather-display');
     weatherDisplay.style.display = 'none';
+    const weatherDisplayError = document.querySelector(
+        '#weather-display-error'
+    );
+    weatherDisplayError.style.display = 'none';
     const loader = document.querySelector('#weather-display-loader');
     loader.style.display = 'initial';
 
     const unitsToggler = document.querySelector('#units-toggler');
     const units = unitsToggler.checked ? 'imperial' : 'metric';
 
-    const {
-        city,
-        country,
-        description,
-        weatherIcon,
-        temperature,
-        feelsLike,
-        humidity,
-        windSpeed,
-    } = await getWeather(cityInput, units);
+    // Attempt to fetch data, display error message if it fails
+    let weatherData;
+    try {
+        weatherData = await getWeather(cityInput, units);
+    } catch (error) {
+        loader.style.display = 'none';
+        weatherDisplayError.style.display = 'initial';
+        weatherDisplayError.textContent =
+            "Sorry, we couldn't find that location.";
+        return;
+    }
 
     const cityElem = document.querySelector('#city');
     const countryElem = document.querySelector('#country');
@@ -29,8 +34,8 @@ const displayWeather = async function displayWeather(cityInput) {
     const humidityElem = document.querySelector('#humidity');
     const windSpeedElem = document.querySelector('#wind-speed');
 
-    cityElem.textContent = city;
-    countryElem.textContent = country;
+    cityElem.textContent = weatherData.city;
+    countryElem.textContent = weatherData.country;
 
     /**
      * Hardcoding the weather icon <img> element in HTML causes the missing image
@@ -42,19 +47,20 @@ const displayWeather = async function displayWeather(cityInput) {
         // Only create <img> element once, first time page is loaded
         weatherIconElem = document.createElement('img');
     }
-    weatherIconElem.src = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+    weatherIconElem.src = `https://openweathermap.org/img/wn/${weatherData.weatherIcon}@2x.png`;
     weatherIconElem.alt = 'Weather icon';
     weatherIconElem.id = 'weather-icon';
     countryElem.after(weatherIconElem);
 
     // Capitalize first letter of description
     descriptionElem.textContent =
-        description.charAt(0).toUpperCase() + description.slice(1);
+        weatherData.description.charAt(0).toUpperCase() +
+        weatherData.description.slice(1);
 
-    temperatureElem.textContent = Math.round(temperature);
-    feelsLikeElem.textContent = `Feels like: ${Math.round(feelsLike)}`;
-    humidityElem.textContent = `Humidity: ${humidity}%`;
-    windSpeedElem.textContent = `Wind: ${windSpeed}`;
+    temperatureElem.textContent = Math.round(weatherData.temperature);
+    feelsLikeElem.textContent = `Feels like: ${Math.round(weatherData.feelsLike)}`;
+    humidityElem.textContent = `Humidity: ${weatherData.humidity}%`;
+    windSpeedElem.textContent = `Wind: ${weatherData.windSpeed}`;
 
     // Add appropriate units of measurement
     if (units === 'metric') {
@@ -69,7 +75,7 @@ const displayWeather = async function displayWeather(cityInput) {
         throw new Error('Invalid unit of measurement!');
     }
 
-    // Done fetching data, hide loader and show weather display
+    // Successfully fetched data, hide loader and show weather display
     loader.style.display = 'none';
     weatherDisplay.style.display = 'flex';
 };
