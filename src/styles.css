@@ -191,6 +191,24 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
+/* ------------------- Footer ------------------- */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+footer > p {
+    padding: 1rem;
+}
+
+footer > p > a {
+    color: black;
+}
+
 /* ------------------- Hover Effects ------------------- */
 
 @media (hover: hover) {
